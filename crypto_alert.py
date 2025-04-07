@@ -2,6 +2,11 @@ import requests
 import smtplib
 from email.mime.text import MIMEText
 from time import sleep
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
 
 # --- Config ---
 CRYPTO_ID = "bitcoin"  # e.g., "bitcoin", "ethereum", "dogecoin"
@@ -9,10 +14,10 @@ VS_CURRENCY = "usd"
 THRESHOLD = 74870  # set your target price
 CHECK_INTERVAL = 60  # seconds
 
-# Gmail credentials
-EMAIL_SENDER = "kiprutoemmanuel96@gmail.com"
-EMAIL_PASSWORD = "xvbj brub yoji waae"
-EMAIL_RECEIVER = "kiprutoemmanuel96@gmail.com"  # can be the same as sender
+# Gmail credentials loaded from .env
+EMAIL_SENDER = os.getenv("EMAIL_SENDER")
+EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
+EMAIL_RECEIVER = os.getenv("EMAIL_RECEIVER")  # can be the same as sender
 
 # --- Get current price from CoinGecko ---
 def get_price():
